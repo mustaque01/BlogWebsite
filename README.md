@@ -161,5 +161,6 @@ This project is licensed under the **MIT License**.
 
 ---
 
-💡 *This project was created to practice ASP.NET Core MVC, Entity Framework, and real-world full-stack development.*
+**💡 I am building this project to practice ASP.NET Core MVC, Entity Framework, and to gain hands-on experience in real-world full-stack development.**
+
 
