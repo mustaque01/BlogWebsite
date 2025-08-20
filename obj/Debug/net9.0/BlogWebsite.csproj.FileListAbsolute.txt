@@ -1,9 +1,0 @@
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebsite.csproj.AssemblyReference.cache
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\rpswa.dswa.cache.json
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebsite.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebsite.AssemblyInfoInputs.cache
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebsite.AssemblyInfo.cs
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebsite.csproj.CoreCompileInputs.cache
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebsite.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebsite.RazorAssemblyInfo.cache
-C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebsite.RazorAssemblyInfo.cs

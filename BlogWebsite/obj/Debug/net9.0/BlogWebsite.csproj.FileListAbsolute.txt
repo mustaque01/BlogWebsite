@@ -94,3 +94,4 @@ C:\Users\musta\BlogWebsite\BlogWebsite\obj\Debug\net9.0\refint\BlogWebsite.dll
 C:\Users\musta\BlogWebsite\BlogWebsite\obj\Debug\net9.0\BlogWebsite.pdb
 C:\Users\musta\BlogWebsite\BlogWebsite\obj\Debug\net9.0\BlogWebsite.genruntimeconfig.cache
 C:\Users\musta\BlogWebsite\BlogWebsite\obj\Debug\net9.0\ref\BlogWebsite.dll
+C:\Users\musta\BlogWebsite\BlogWebsite\obj\Debug\net9.0\BlogWebsite.sourcelink.json
