@@ -1,21 +1,30 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using BlogWebsite.Models;
+using BlogWebsite.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogWebsite.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDbContext _db;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
     {
         _logger = logger;
+        _db = db;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var latest = await _db.Blogs
+            .Include(b => b.Author)
+            .OrderByDescending(b => b.CreatedAt)
+            .Take(5)
+            .ToListAsync();
+        return View(latest);
     }
 
     public IActionResult Privacy()
