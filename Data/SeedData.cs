@@ -1,6 +1,7 @@
 using BlogWebsite.Data;
 using BlogWebsite.Models;
 using Microsoft.AspNetCore.Identity;
+using MongoDB.Driver;
 
 namespace BlogWebsite.Data;
 
@@ -8,11 +9,9 @@ public static class SeedData
 {
     public static async Task Initialize(IServiceProvider serviceProvider, ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
-        // Ensure database is created
-        await context.Database.EnsureCreatedAsync();
-
         // Check if we already have data
-        if (context.Blogs.Any())
+        var blogCount = await context.Blogs.CountDocumentsAsync(_ => true);
+        if (blogCount > 0)
         {
             return; // DB has been seeded
         }
@@ -35,28 +34,27 @@ public static class SeedData
         {
             new Blog
             {
-                Title = "Welcome to Our Blog!",
-                Content = "This is our first blog post. We're excited to share our thoughts and ideas with you. Stay tuned for more interesting content coming your way!",
-                AuthorId = sampleUser.Id,
+                Title = "Welcome to Our MongoDB Blog!",
+                Content = "This is our first blog post using MongoDB. We're excited to share our thoughts and ideas with you. MongoDB provides excellent scalability and flexibility for our blog platform!",
+                AuthorId = sampleUser.Id.ToString(),
                 CreatedAt = DateTime.UtcNow.AddDays(-5)
             },
             new Blog
             {
-                Title = "Getting Started with ASP.NET Core",
-                Content = "ASP.NET Core is a powerful framework for building web applications. In this post, we'll explore the basics of creating a blog website using MVC pattern, Entity Framework, and Identity for authentication.",
-                AuthorId = sampleUser.Id,
+                Title = "Getting Started with MongoDB in ASP.NET Core",
+                Content = "MongoDB is a powerful NoSQL database perfect for modern web applications. In this post, we'll explore how to integrate MongoDB with ASP.NET Core for building scalable blog websites.",
+                AuthorId = sampleUser.Id.ToString(),
                 CreatedAt = DateTime.UtcNow.AddDays(-3)
             },
             new Blog
             {
-                Title = "The Future of Web Development",
-                Content = "Web development is constantly evolving. From static websites to dynamic applications, we've come a long way. Let's discuss the trends and technologies shaping the future of web development.",
-                AuthorId = sampleUser.Id,
+                Title = "The Future of NoSQL Databases",
+                Content = "NoSQL databases like MongoDB are revolutionizing how we store and retrieve data. Their flexible schema and horizontal scaling capabilities make them perfect for modern applications.",
+                AuthorId = sampleUser.Id.ToString(),
                 CreatedAt = DateTime.UtcNow.AddDays(-1)
             }
         };
 
-        context.Blogs.AddRange(sampleBlogs);
-        await context.SaveChangesAsync();
+        await context.Blogs.InsertManyAsync(sampleBlogs);
     }
 }

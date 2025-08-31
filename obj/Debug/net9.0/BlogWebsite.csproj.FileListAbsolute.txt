@@ -322,3 +322,17 @@ C:\Users\musta\BlogWebsite\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Users\musta\BlogWebsite\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\musta\BlogWebsite\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
 C:\Users\musta\BlogWebsite\obj\Debug\net9.0\BlogWebs.AA08B81A.Up2Date
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\AspNetCore.Identity.MongoDbCore.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\DnsClient.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\MongoDB.Bson.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\MongoDB.Driver.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\MongoDbGenericRepository.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\MongoFramework.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\SharpCompress.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\Snappier.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\System.Linq.Async.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\ZstdSharp.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\musta\BlogWebsite\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll

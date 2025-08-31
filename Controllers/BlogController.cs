@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using BlogWebsite.Data;
 using BlogWebsite.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -21,7 +21,10 @@ public class BlogController : Controller
     // GET: /Blog
     public async Task<IActionResult> Index()
     {
-        var blogs = await _db.Blogs.Include(b => b.Author).OrderByDescending(b => b.CreatedAt).ToListAsync();
+        var blogs = await _db.Blogs
+            .Find(_ => true)
+            .SortByDescending(b => b.CreatedAt)
+            .ToListAsync();
         return View(blogs);
     }
 
@@ -42,9 +45,8 @@ public class BlogController : Controller
         {
             var user = await _userManager.GetUserAsync(User);
             model.CreatedAt = DateTime.UtcNow;
-            model.AuthorId = user?.Id;
-            _db.Blogs.Add(model);
-            await _db.SaveChangesAsync();
+            model.AuthorId = user?.Id.ToString();
+            await _db.Blogs.InsertOneAsync(model);
             return RedirectToAction("Index");
         }
         return View(model);

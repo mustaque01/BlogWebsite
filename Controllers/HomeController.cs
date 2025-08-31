@@ -2,7 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using BlogWebsite.Models;
 using BlogWebsite.Data;
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 
 namespace BlogWebsite.Controllers;
 
@@ -20,9 +20,9 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         var latest = await _db.Blogs
-            .Include(b => b.Author)
-            .OrderByDescending(b => b.CreatedAt)
-            .Take(5)
+            .Find(_ => true)
+            .SortByDescending(b => b.CreatedAt)
+            .Limit(5)
             .ToListAsync();
         return View(latest);
     }

@@ -1,34 +1,28 @@
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using BlogWebsite.Data;
 using BlogWebsite.Models;
 using Microsoft.AspNetCore.Identity;
+using AspNetCore.Identity.MongoDbCore.Models;
+using AspNetCore.Identity.MongoDbCore.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Database + Identity setup
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? "Data Source=blog.db"; // fallback to SQLite file
+// MongoDB + Identity setup
+var mongoConnectionString = builder.Configuration.GetConnectionString("MongoDB") 
+    ?? "mongodb://localhost:27017/BlogWebsiteDB";
 
-// Choose provider based on connection string pattern
-if (connectionString.Contains(".db"))
-{
-    builder.Services.AddDbContext<BlogWebsite.Data.ApplicationDbContext>(options =>
-        options.UseSqlite(connectionString));
-}
-else
-{
-    builder.Services.AddDbContext<BlogWebsite.Data.ApplicationDbContext>(options =>
-        options.UseSqlServer(connectionString));
-}
+var mongoUrl = MongoUrl.Create(mongoConnectionString);
+var mongoClient = new MongoClient(mongoUrl);
 
-builder.Services.AddIdentity<BlogWebsite.Models.ApplicationUser, Microsoft.AspNetCore.Identity.IdentityRole>()
-    .AddEntityFrameworkStores<BlogWebsite.Data.ApplicationDbContext>()
+// Register MongoDB services
+builder.Services.AddSingleton<IMongoClient>(mongoClient);
+builder.Services.AddScoped<ApplicationDbContext>();
+
+// Configure MongoDB Identity
+builder.Services.AddIdentity<ApplicationUser, MongoIdentityRole<Guid>>()
+    .AddMongoDbStores<ApplicationUser, MongoIdentityRole<Guid>, Guid>(mongoConnectionString, "BlogWebsiteDB")
     .AddDefaultTokenProviders()
     .AddDefaultUI();
-
-// TODO: Run EF Core migrations to create the database:
-// dotnet ef migrations add InitialCreate
-// dotnet ef database update
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
